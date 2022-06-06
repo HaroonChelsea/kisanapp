@@ -32,7 +32,7 @@ class PageSettingController extends Controller
         'big_save_banner.mimes'     => 'Photo type must be in jpeg, jpg, png, svg.',
         'best_seller_banner1.mimes' => 'Photo type must be in jpeg, jpg, png, svg.',
         'big_save_banner1.mimes'    => 'Photo type must be in jpeg, jpg, png, svg.'
-      
+
     ];
 
 
@@ -50,37 +50,37 @@ class PageSettingController extends Controller
 
         $data = Pagesetting::findOrFail(1);
         $input = $request->all();
-        
-            if ($file = $request->file('best_seller_banner')) 
-            {              
+
+            if ($file = $request->file('best_seller_banner'))
+            {
                 $name = time().str_replace(' ', '', $file->getClientOriginalName());
                 $data->upload($name,$file,$data->best_seller_banner);
                 $input['best_seller_banner'] = $name;
-            }    
-            if ($file = $request->file('big_save_banner')) 
-            {              
+            }
+            if ($file = $request->file('big_save_banner'))
+            {
                 $name = time().str_replace(' ', '', $file->getClientOriginalName());
-                $data->upload($name,$file,$data->big_save_banner);           
+                $data->upload($name,$file,$data->big_save_banner);
                 $input['big_save_banner'] = $name;
-            } 
+            }
 
-            if ($file = $request->file('best_seller_banner1')) 
-            {              
+            if ($file = $request->file('best_seller_banner1'))
+            {
                 $name = time().str_replace(' ', '', $file->getClientOriginalName());
                 $data->upload($name,$file,$data->best_seller_banner1);
                 $input['best_seller_banner1'] = $name;
-            }    
-            if ($file = $request->file('big_save_banner1')) 
-            {              
+            }
+            if ($file = $request->file('big_save_banner1'))
+            {
                 $name = time().str_replace(' ', '', $file->getClientOriginalName());
-                $data->upload($name,$file,$data->big_save_banner1);           
+                $data->upload($name,$file,$data->big_save_banner1);
                 $input['big_save_banner1'] = $name;
-            } 
+            }
 
 
         $data->update($input);
         $msg = 'Data Updated Successfully.';
-        return response()->json($msg);      
+        return response()->json($msg);
     }
 
 
@@ -88,7 +88,7 @@ class PageSettingController extends Controller
     {
         $data = Pagesetting::findOrFail(1);
         $input = $request->all();
-        
+
         if ($request->slider == ""){
             $input['slider'] = 0;
         }
@@ -133,31 +133,31 @@ class PageSettingController extends Controller
         }
         $data->update($input);
         $msg = 'Data Updated Successfully.';
-        return response()->json($msg);      
+        return response()->json($msg);
     }
 
 
     public function contact()
     {
-        $data = Pagesetting::find(1);   
+        $data = Pagesetting::find(1);
         return view('admin.pagesetting.contact',compact('data'));
     }
 
     public function customize()
     {
-        $data = Pagesetting::find(1);   
+        $data = Pagesetting::find(1);
         return view('admin.pagesetting.customize',compact('data'));
     }
 
     public function best_seller()
     {
-        $data = Pagesetting::find(1);   
+        $data = Pagesetting::find(1);
         return view('admin.pagesetting.best_seller',compact('data'));
     }
 
     public function big_save()
     {
-        $data = Pagesetting::find(1);   
+        $data = Pagesetting::find(1);
         return view('admin.pagesetting.big_save',compact('data'));
     }
 

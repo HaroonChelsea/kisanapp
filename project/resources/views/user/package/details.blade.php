@@ -7,7 +7,7 @@
         @include('includes.user-dashboard-sidebar')
                 <div class="col-lg-8">
 <div class="user-profile-details">
-                        
+
 <div class="account-info">
                             <div class="header-area">
                                 <h4 class="title">
@@ -87,8 +87,8 @@
 
                             @include('includes.form-success')
                             @include('includes.form-error')
-                            @include('includes.admin.form-error') 
-                                            
+                            @include('includes.admin.form-error')
+
                                             {{ csrf_field() }}
 
 
@@ -176,7 +176,7 @@
                                         @endif
                                         <input type="hidden" name="subs_id" value="{{ $subs->id }}">
 
-                                 @if($subs->price != 0)       
+                                 @if($subs->price != 0)
 
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -319,11 +319,11 @@
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 <script type="text/javascript">
-    
+
         $(document).on('submit','#paystack-form',function(e){
             var val = $('#sub').val();
                 if(val == 0)
-                {            
+                {
                     $.get('{{ route('user.paystack.check').'?shop_name=' }}'+$('#shop-name').val(), function(data, status){
 
 
@@ -343,11 +343,11 @@
                             $('#ck').val('0');
                           }
 
-              
+
 
                     });
 
-setTimeout(function(){ 
+setTimeout(function(){
 
 if($('#ck').val() == '0') {
 
@@ -370,7 +370,7 @@ if($('#ck').val() == '0') {
                                   }
                                 });
                                 handler.openIframe();
-                                    return false;    
+                                    return false;
 
 
 
@@ -379,7 +379,7 @@ if($('#ck').val() == '0') {
 
 
  }, 1000);
-  
+
 
 
 
@@ -390,7 +390,7 @@ if($('#ck').val() == '0') {
 
                             else {
                                 $('#preloader').show();
-                                return true;   
+                                return true;
                             }
 
 
@@ -479,16 +479,16 @@ if($('#ck').val() == '0') {
                 $("#syear").prop("required", true);
                 $("#stripes").show();
             }
-        }    
+        }
 </script>
 @endif
 
 <script type="text/javascript">
-    
+
 $(document).on('submit','#subscribe-form',function(){
      $('#preloader').show();
 });
-    
+
 </script>
 
 @endsection

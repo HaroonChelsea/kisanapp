@@ -1,6 +1,6 @@
-@extends('layouts.admin') 
+@extends('layouts.admin')
 
-@section('content')  
+@section('content')
 					<input type="hidden" id="headerdata" value="{{ __('PAYMENT') }}">
 					<div class="content-area">
 						<div class="mr-breadcrumb">
@@ -26,7 +26,7 @@
 								<div class="col-lg-12">
 									<div class="mr-table allproduct">
 
-                        @include('includes.admin.form-success') 
+                        @include('includes.admin.form-success')
 
 										<div class="table-responsiv">
 												<table id="geniustable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
@@ -50,8 +50,8 @@
 {{-- ADD / EDIT MODAL --}}
 
 										<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
-										
-										
+
+
 										<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
 												<div class="submit-loader">
@@ -108,7 +108,7 @@
 {{-- DELETE MODAL ENDS --}}
 
 
-@endsection    
+@endsection
 
 
 
@@ -132,7 +132,7 @@
                 	processing: '<img src="{{asset('assets/images/'.$gs->admin_loader)}}">'
                 },
 				drawCallback : function( settings ) {
-	    				$('.select').niceSelect();	
+	    				$('.select').niceSelect();
 				}
             });
 
@@ -142,7 +142,7 @@
           '<i class="fas fa-plus"></i> {{ __('Add New Payment') }}'+
           '</a>'+
           '</div>');
-      });												
-							
+      });
+
     </script>
-@endsection   
+@endsection

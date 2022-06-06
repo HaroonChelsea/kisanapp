@@ -573,7 +573,7 @@
                 <a class="verify-link" href="javascript:;"  data-toggle="tooltip" data-placement="top" title="{{ $langg->lang783 }}">
                   {{--  {{ $langg->lang783 }}  --}}
                   <i class="fas fa-check-circle"></i>
-                
+
                 </a>
                 @endif
 

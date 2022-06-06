@@ -31,10 +31,10 @@ class PaymentGatewayController extends Controller
                                 $s = $data->status == 1 ? 'selected' : '';
                                 $ns = $data->status == 0 ? 'selected' : '';
                                 return '<div class="action-list"><select class="process select droplinks '.$class.'"><option data-val="1" value="'. route('admin-payment-status',['id1' => $data->id, 'id2' => 1]).'" '.$s.'>Activated</option><<option data-val="0" value="'. route('admin-payment-status',['id1' => $data->id, 'id2' => 0]).'" '.$ns.'>Deactivated</option>/select></div>';
-                            }) 
+                            })
                             ->addColumn('action', function(PaymentGateway $data) {
                                 return '<div class="action-list"><a href="' . route('admin-payment-edit',$data->id) . '"> <i class="fas fa-edit"></i>Edit</a><a href="javascript:;" data-href="' . route('admin-payment-delete',$data->id) . '" data-toggle="modal" data-target="#confirm-delete" class="delete"><i class="fas fa-trash-alt"></i></a></div>';
-                            }) 
+                            })
                             ->rawColumns(['status','action'])
                             ->toJson(); //--- Returning Json Data To Client Side
     }
@@ -69,10 +69,10 @@ class PaymentGatewayController extends Controller
         $data->fill($input)->save();
         //--- Logic Section Ends
 
-        //--- Redirect Section        
+        //--- Redirect Section
         $msg = 'New Data Added Successfully.'.'<a href="'.route("admin-payment-index").'">View Payment Lists</a>';
-        return response()->json($msg);      
-        //--- Redirect Section Ends   
+        return response()->json($msg);
+        //--- Redirect Section Ends
     }
 
     //*** GET Request
@@ -89,22 +89,22 @@ class PaymentGatewayController extends Controller
         $rules = ['title' => 'unique:payment_gateways,title,'.$id];
 
         $validator = Validator::make($request->all(), $rules);
-        
+
         if ($validator->fails()) {
           return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
-        }        
+        }
         //--- Validation Section Ends
 
         //--- Logic Section
         $data = PaymentGateway::findOrFail($id);
-        $input = $request->all();  
+        $input = $request->all();
         $data->update($input);
         //--- Logic Section Ends
 
-        //--- Redirect Section     
+        //--- Redirect Section
         $msg = 'Data Updated Successfully.'.'<a href="'.route("admin-payment-index").'">View Payment Lists</a>';
-        return response()->json($msg);    
-        //--- Redirect Section Ends           
+        return response()->json($msg);
+        //--- Redirect Section Ends
     }
 
       //*** GET Request Status
@@ -121,9 +121,9 @@ class PaymentGatewayController extends Controller
     {
         $data = PaymentGateway::findOrFail($id);
         $data->delete();
-        //--- Redirect Section     
+        //--- Redirect Section
         $msg = 'Data Deleted Successfully.';
-        return response()->json($msg);      
-        //--- Redirect Section Ends   
+        return response()->json($msg);
+        //--- Redirect Section Ends
     }
 }

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use App\Classes\GeniusMailer;
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
-use App\Models\BlogCategory;
 use App\Models\Counter;
 use App\Models\Generalsetting;
 use App\Models\Order;
@@ -137,9 +135,9 @@ class FrontendController extends Controller
          }
         $selectable = ['id','user_id','name','slug','features','colors','thumbnail','price','previous_price','attributes','size','size_price','discount_date'];
         $sliders = DB::table('sliders')->get();
-       
+
         $ps = DB::table('pagesettings')->find(1);
-       
+
 
 	    return view('front.index',compact('ps','sliders'));
 	}
@@ -303,93 +301,13 @@ class FrontendController extends Controller
         }
         return "";
     }
-    
-    
+
+
     function success(Request $request ,$get){
-   
+
         return view('front.thank',compact('get'));
     }
 
-
-// -------------------------------- BLOG SECTION ----------------------------------------
-
-	public function blog(Request $request)
-	{
-        $this->code_image();
-		$blogs = Blog::orderBy('created_at','desc')->paginate(9);
-            if($request->ajax()){
-                return view('front.pagination.blog',compact('blogs'));
-            }
-		return view('front.blog',compact('blogs'));
-	}
-
-    public function blogcategory(Request $request, $slug)
-    {
-        $this->code_image();
-        $bcat = BlogCategory::where('slug', '=', str_replace(' ', '-', $slug))->first();
-        $blogs = $bcat->blogs()->orderBy('created_at','desc')->paginate(9);
-            if($request->ajax()){
-                return view('front.pagination.blog',compact('blogs'));
-            }
-        return view('front.blog',compact('bcat','blogs'));
-    }
-
-    public function blogtags(Request $request, $slug)
-    {
-        $this->code_image();
-        $blogs = Blog::where('tags', 'like', '%' . $slug . '%')->paginate(9);
-            if($request->ajax()){
-                return view('front.pagination.blog',compact('blogs'));
-            }
-        return view('front.blog',compact('blogs','slug'));
-    }
-
-    public function blogsearch(Request $request)
-    {
-        $this->code_image();
-        $search = $request->search;
-        $blogs = Blog::where('title', 'like', '%' . $search . '%')->orWhere('details', 'like', '%' . $search . '%')->paginate(9);
-            if($request->ajax()){
-                return view('front.pagination.blog',compact('blogs'));
-            }
-        return view('front.blog',compact('blogs','search'));
-    }
-
-    public function blogarchive(Request $request,$slug)
-    {
-        $this->code_image();
-        $date = \Carbon\Carbon::parse($slug)->format('Y-m');
-        $blogs = Blog::where('created_at', 'like', '%' . $date . '%')->paginate(9);
-            if($request->ajax()){
-                return view('front.pagination.blog',compact('blogs'));
-            }
-        return view('front.blog',compact('blogs','date'));
-    }
-
-    public function blogshow($id)
-    {
-        $this->code_image();
-        $tags = null;
-        $tagz = '';
-        $bcats = BlogCategory::all();
-        $blog = Blog::findOrFail($id);
-        $blog->views = $blog->views + 1;
-        $blog->update();
-        $name = Blog::pluck('tags')->toArray();
-        foreach($name as $nm)
-        {
-            $tagz .= $nm.',';
-        }
-        $tags = array_unique(explode(',',$tagz));
-
-        $archives= Blog::orderBy('created_at','desc')->get()->groupBy(function($item){ return $item->created_at->format('F Y'); })->take(5)->toArray();
-        $blog_meta_tag = $blog->meta_tag;
-        $blog_meta_description = $blog->meta_description;
-        return view('front.blogshow',compact('blog','bcats','tags','archives','blog_meta_tag','blog_meta_description'));
-    }
-
-
-// -------------------------------- BLOG SECTION ENDS----------------------------------------
 
 // -------------------------------- FAQ SECTION ----------------------------------------
 	public function faq()
@@ -620,7 +538,7 @@ function finalize(){
 }
 
 function updateFinalize(){
-	
+
 	   if (!Schema::hasColumn('orders', 'whole_discount')){
             Schema::table('orders', function($table) {
                 $table->double("whole_discount")->default(0);
@@ -638,8 +556,8 @@ function updateFinalize(){
         $or->update();
         $new_cart = [];
         }
-		
-		
+
+
     $actual_path = str_replace('project','',base_path());
 
     if (file_exists($actual_path."backup-index.zip")) {

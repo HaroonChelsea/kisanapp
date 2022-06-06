@@ -1,0 +1,5 @@
+{
+    "require-dev": {
+        "oscarafdev/migrations-generator": "^2.0"
+    }
+}

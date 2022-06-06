@@ -10,7 +10,7 @@
                                         <div class="right">
                                             @if($message->conversation->user->is_provider == 1)
                                             <img class="img-circle" src="{{$message->conversation->user->photo != null ? $message->conversation->user->photo : asset('assets/images/noimage.png')}}" alt="">
-                                            @else 
+                                            @else
 
                                             <img class="img-circle" src="{{$message->conversation->user->photo != null ? asset('assets/images/users/'.$message->conversation->user->photo) : asset('assets/images/noimage.png')}}" alt="">
 

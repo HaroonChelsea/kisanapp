@@ -32,7 +32,7 @@
                       <div class="gocover" style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
                       <form id="geniusform" action="{{route('admin-lang-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
-                      @include('includes.admin.form-both')  
+                      @include('includes.admin.form-both')
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -78,7 +78,7 @@
                               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
                      <hr>
-                        
+
                         <h4 class="text-center">HEADER</h4>
 
                       <hr>
@@ -342,7 +342,7 @@
                           </div>
                         </div>
 
-                        <div class="row">
+                        {{-- <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
                                 <h4 class="heading">Blog *</h4>
@@ -352,7 +352,7 @@
                           <div class="col-lg-7">
                             <input type="text" class="input-field" name="lang18" placeholder="Blog" required="" value="{{ $lang->lang18 }}">
                           </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                           <div class="col-lg-4">
@@ -379,7 +379,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">HOME</h4>
 
                       <hr>
@@ -533,7 +533,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">BLOG</h4>
 
                       <hr>
@@ -690,7 +690,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">CONTACT US</h4>
 
                       <hr>
@@ -782,7 +782,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">PRODUCT ADD CART</h4>
 
                       <hr>
@@ -848,7 +848,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">PRODUCT CATALOG</h4>
 
                       <hr>
@@ -988,7 +988,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">PRODUCT COMPARE</h4>
 
                       <hr>
@@ -1091,7 +1091,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">PRODUCT DETAILS</h4>
 
                       <hr>
@@ -1808,9 +1808,9 @@
                                 value="{{ $lang->lang769 }}">
                             </div>
                           </div>
-    
 
-    
+
+
                           <div class="row">
                             <div class="col-lg-4">
                               <div class="left-area">
@@ -1906,7 +1906,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">CART</h4>
 
                       <hr>
@@ -2094,7 +2094,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">CHECKOUT</h4>
 
                       <hr>
@@ -2533,7 +2533,7 @@
                                                       <input type="text" class="input-field" name="lang744" placeholder="Orders" required="" value="{{ $lang->lang744 }}">
                                                     </div>
                                                   </div>
-                                                  
+
                                                   <div class="row">
                                                     <div class="col-lg-4">
                                                       <div class="left-area">
@@ -2887,7 +2887,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Wishlists</h4>
 
                       <hr>
@@ -2906,7 +2906,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Success</h4>
 
                       <hr>
@@ -2937,7 +2937,7 @@
 
 
                      <hr>
-                        
+
                         <h4 class="text-center">LOGIN</h4>
 
                       <hr>
@@ -3222,7 +3222,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">FORGOT</h4>
 
                       <hr>
@@ -3313,7 +3313,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">VENDOR STORE</h4>
 
                       <hr>
@@ -3448,7 +3448,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">FOOTER</h4>
 
                       <hr>
@@ -3504,7 +3504,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">SUCCESS MESSAGES</h4>
 
                       <hr>
@@ -3767,7 +3767,7 @@
 
 
                                                 <hr>
-                                                  
+
                                                   <h4 class="text-center">Subscription Popup</h4>
 
                                                 <hr>
@@ -3801,7 +3801,7 @@
 
 
                                                 <hr>
-                                                  
+
                                                   <h4 class="text-center">ERROR PAGE</h4>
 
                                                 <hr>
@@ -3873,7 +3873,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">USER DASHBOARD</h4>
 
                       <hr>
@@ -4157,7 +4157,7 @@
                               required="" value="{{ isset($lang->lang808) ? $lang->lang808 : 'Recent Orders' }}">
                           </div>
                         </div>
-  
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -4170,7 +4170,7 @@
                               required="" value="{{ isset($lang->lang809) ? $lang->lang809 : 'Total Orders' }}">
                           </div>
                         </div>
-  
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -4183,7 +4183,7 @@
                               required="" value="{{ isset($lang->lang810) ? $lang->lang810 : 'Pending Orders' }}">
                           </div>
                         </div>
-                        
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -4196,7 +4196,7 @@
                               required="" value="{{ isset($lang->lang811) ? $lang->lang811 : 'All Time' }}">
                           </div>
                         </div>
-  
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -4211,7 +4211,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">PURCHASED ITEMS</h4>
 
                       <hr>
@@ -4767,7 +4767,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Affiliate Code</h4>
 
                       <hr>
@@ -4859,7 +4859,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">WITHDRAW</h4>
 
                       <hr>
@@ -4951,7 +4951,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">WITHDRAW NOW</h4>
 
                       <hr>
@@ -5265,7 +5265,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">FAVORITE SELLERS</h4>
 
                       <hr>
@@ -5393,7 +5393,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Messages</h4>
 
                       <hr>
@@ -5651,7 +5651,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Tickets And Disputes</h4>
 
                       <hr>
@@ -5972,7 +5972,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">EDIT PROFILE</h4>
 
                       <hr>
@@ -6099,7 +6099,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">RESET PASSWORD</h4>
 
                       <hr>
@@ -6167,7 +6167,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Subscription Plans</h4>
 
                       <hr>
@@ -6490,7 +6490,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">GLOBAL</h4>
 
                       <hr>
@@ -6537,7 +6537,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">HEADER</h4>
 
                       <hr>
@@ -6604,7 +6604,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">NOTIFICATION</h4>
 
                       <hr>
@@ -6662,7 +6662,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">SIDEBAR</h4>
 
                       <hr>
@@ -6906,7 +6906,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Edit Profile</h4>
 
                       <hr>
@@ -7024,7 +7024,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Vendor Verification</h4>
 
                       <hr>
@@ -7149,7 +7149,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">DASHBOARD</h4>
 
                       <hr>
@@ -7240,7 +7240,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">ORDERS</h4>
 
                       <hr>
@@ -7429,7 +7429,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">ORDER DETAILS</h4>
 
                       <hr>
@@ -7866,7 +7866,7 @@
                         </div>
 
 
-                        <div class="row">                        
+                        <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
                                 <h4 class="heading">License Key *</h4>
@@ -7981,7 +7981,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">ORDER INVOICE</h4>
 
                       <hr>
@@ -8119,7 +8119,7 @@
                         <input type="text" class="input-field" name="lang596" placeholder="Packaging Cost" required="" value="{{ $lang->lang596 }}">
                       </div>
                     </div>
-                    
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -8255,7 +8255,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">PRODUCTS & AFFILIATE PRODUCTS</h4>
 
                       <hr>
@@ -9621,8 +9621,8 @@
                               required="" value="{{ isset($lang->lang805) ? $lang->lang805 : 'Prefered Size: (800x800) or Square Size.' }}">
                           </div>
                         </div>
-    
-    
+
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -9635,8 +9635,8 @@
                               required="" value="{{ isset($lang->lang806) ? $lang->lang806 : 'Image height and width must be 600 x 600.' }}">
                           </div>
                         </div>
-    
-    
+
+
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -9654,7 +9654,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">BULK PRODUCT UPLOAD</h4>
 
                       <hr>
@@ -9698,7 +9698,7 @@
 
 
                    <hr>
-                        
+
                         <h4 class="text-center">WITHDRAW</h4>
 
                       <hr>
@@ -9791,7 +9791,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">WITHDRAW NOW</h4>
 
                       <hr>
@@ -10045,7 +10045,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Services</h4>
 
                       <hr>
@@ -10297,7 +10297,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">SHIPPING METHODS AND PACKAGING</h4>
 
                       <hr>
@@ -10589,7 +10589,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">BANNER</h4>
 
                       <hr>
@@ -10649,7 +10649,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">SHIPPING COST</h4>
 
                       <hr>
@@ -10680,7 +10680,7 @@
                         </div>
 
                       <hr>
-                        
+
                         <h4 class="text-center">SOCIAL LINKS</h4>
 
                       <hr>
@@ -10753,7 +10753,7 @@
 
                               </div>
                             </div>
-                          
+
                           </div>
                         </div>
 
@@ -10770,7 +10770,7 @@
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
-                              
+
                             </div>
                           </div>
                           <div class="col-lg-7">

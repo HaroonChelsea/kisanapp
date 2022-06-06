@@ -22,18 +22,18 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['status']]);
-       
+
     }
 
     public function index()
     {
-        $user = Auth::user();  
+        $user = Auth::user();
         return view('user.dashboard',compact('user'));
     }
 
     public function profile()
     {
-        $user = Auth::user();  
+        $user = Auth::user();
         return view('user.profile',compact('user'));
     }
 
@@ -49,16 +49,16 @@ class UserController extends Controller
 
 
         $validator = Validator::make($request->all(), $rules);
-        
+
         if ($validator->fails()) {
           return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
         }
         //--- Validation Section Ends
-        $input = $request->all();  
-        $data = Auth::user();        
-            if ($file = $request->file('photo')) 
-            {    
-                $extensions = ['jpeg','jpg','png','svg'];       
+        $input = $request->all();
+        $data = Auth::user();
+            if ($file = $request->file('photo'))
+            {
+                $extensions = ['jpeg','jpg','png','svg'];
                 if(!in_array($file->getClientOriginalExtension(),$extensions)){
                     return response()->json(array('errors' => [__('Image format not supported')]));
                 }
@@ -69,12 +69,12 @@ class UserController extends Controller
                     if (file_exists(public_path().'/assets/images/users/'.$data->photo)) {
                         unlink(public_path().'/assets/images/users/'.$data->photo);
                     }
-                }            
+                }
             $input['photo'] = $name;
-            } 
+            }
         $data->update($input);
         $msg = 'Successfully updated your profile';
-        return response()->json($msg); 
+        return response()->json($msg);
     }
 
     public function resetform()
@@ -90,10 +90,10 @@ class UserController extends Controller
                 if ($request->newpass == $request->renewpass){
                     $input['password'] = Hash::make($request->newpass);
                 }else{
-                    return response()->json(array('errors' => [ 0 => 'Confirm password does not match.' ]));     
+                    return response()->json(array('errors' => [ 0 => 'Confirm password does not match.' ]));
                 }
             }else{
-                return response()->json(array('errors' => [ 0 => 'Current password Does not match.' ]));   
+                return response()->json(array('errors' => [ 0 => 'Current password Does not match.' ]));
             }
         }
         $user->update($input);
@@ -113,14 +113,14 @@ class UserController extends Controller
 
     public function vendorrequest($id)
     {
-        if (Session::has('currency')) 
+        if (Session::has('currency'))
         {
             $curr = Currency::find(Session::get('currency'));
         }
         else
         {
             $curr = Currency::where('is_default','=',1)->first();
-        }   
+        }
         $subs = Subscription::findOrFail($id);
         $gs = Generalsetting::findOrfail(1);
         $user = Auth::user();
@@ -142,7 +142,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'shop_name'   => 'unique:users',
-           ],[ 
+           ],[
                'shop_name.unique' => 'This shop name has already been taken.'
             ]);
         $user = Auth::user();
@@ -150,10 +150,10 @@ class UserController extends Controller
         $subs = Subscription::findOrFail($request->subs_id);
         $settings = Generalsetting::findOrFail(1);
                     $today = Carbon::now()->format('Y-m-d');
-                    $input = $request->all();  
+                    $input = $request->all();
                     $user->is_vendor = 2;
                     $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
-                    $user->mail_sent = 1;     
+                    $user->mail_sent = 1;
                     $user->update($input);
                     $sub = new UserSubscription;
                     $sub->user_id = $user->id;
@@ -178,9 +178,9 @@ class UserController extends Controller
                         'aname' => "",
                         'aemail' => "",
                         'onumber' => "",
-                    ];    
+                    ];
                     $mailer = new GeniusMailer();
-                    $mailer->sendAutoMail($data);        
+                    $mailer->sendAutoMail($data);
                     }
                     else
                     {

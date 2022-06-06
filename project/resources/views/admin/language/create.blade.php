@@ -373,7 +373,7 @@
                         </div>
                       </div>
 
-                      <div class="row">
+                      {{-- <div class="row">
                         <div class="col-lg-4">
                           <div class="left-area">
                             <h4 class="heading">Blog *</h4>
@@ -384,7 +384,7 @@
                           <input type="text" class="input-field" name="lang18" placeholder="Blog" required=""
                             value="Blog">
                         </div>
-                      </div>
+                      </div> --}}
 
                       <div class="row">
                         <div class="col-lg-4">
@@ -4486,7 +4486,7 @@
                             required="" value="Pending Orders">
                         </div>
                       </div>
-                      
+
                       <div class="row">
                         <div class="col-lg-4">
                           <div class="left-area">
@@ -7552,7 +7552,7 @@
 
 
                       <hr>
-                        
+
                         <h4 class="text-center">Vendor Verification</h4>
 
                       <hr>

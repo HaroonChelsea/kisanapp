@@ -14,11 +14,11 @@ class OrderDetailsResource extends JsonResource
      */
     public function toArray($request)
     {
-        
-         
+
+
        $cart = json_decode($this->cart,true);
-       
-       
+
+
 
       foreach($cart['items'] as $item){
          $new_cart[] = $item;
@@ -26,29 +26,29 @@ class OrderDetailsResource extends JsonResource
       $i = 0;
       foreach($new_cart as $value){
 
-           
+
             $newdata["id"] = $new_cart[$i]['item']['id'];
             $newdata['name'] = $new_cart[$i]['item']['name'];
             $newdata['vendor_id'] = $new_cart[$i]['item']['user_id'];
             $newdata['type'] = $new_cart[$i]['item']['type'];
             $newdata['feature_image'] = url('/') . '/assets/images/products/'.$new_cart[$i]['item']['photo'];
-            
+
             $new_cart[$i] += $newdata;
             unset($new_cart[$i]['item']);
 
-          
+
           $new_cart[$i] += ['total_price' => $new_cart[$i]['price']];
 
           unset($new_cart[$i]['license']);
           unset($new_cart[$i]['dp']);
           unset($new_cart[$i]['price']);
         $i++;
-         
+
       }
-        
-        
-        
-        
+
+
+
+
       return [
         'id' => $this->id,
         'number' => $this->order_number,

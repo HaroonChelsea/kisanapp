@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['prefix' => 'vendor'], function () {
-    
+
     Route::post('register', 'Api\Auth\VendorAuthController@register');
     Route::post('login', 'Api\Auth\VendorAuthController@login');
 
@@ -23,9 +23,9 @@ Route::group(['prefix' => 'vendor'], function () {
 
 
             // --------------------- VENDOR DASHBOARD ---------------------
-            
+
             Route::get('/dashboard', 'Api\Vendor\VendorController@dashboard');
-    
+
             // --------------------- VENDOR DASHBOARD ENDS ---------------------
 
 
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'vendor'], function () {
             Route::post('/verify', 'Api\Vendor\VendorController@verifysubmit');
             Route::post('/profile/update', 'Api\Vendor\VendorController@profileupdate');
             Route::post('/social/link/update', 'Api\Vendor\VendorController@social_link_update');
- 
+
 
             // ---------------------VENDOR CONTROLLER ---------------------
 
@@ -126,12 +126,12 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('social/login', 'Api\Auth\AuthController@social_login');
     Route::post('refresh/token', 'Api\Auth\AuthController@refresh');
     Route::get('details', 'Api\Auth\AuthController@details');
-    
+
     Route::group(['middleware' => 'auth:api'], function () {
 
 
         // --------------------- USER DASHBOARD ---------------------
-        
+
         Route::get('/dashboard', 'Api\User\ProfileController@dashboard');
 
         // --------------------- USER DASHBOARD ENDS ---------------------
@@ -201,16 +201,16 @@ Route::group(['prefix' => 'user'], function () {
         Route::post('/withdraw/create', 'Api\User\WithdrawController@store');
 
         // ---------------------WITHDRAW CONTROLLER ENDS ---------------------
-        
-        
+
+
         // ---------------------WISHLIST CONTROLLER ---------------------
 
         Route::get('/wishlists','Api\User\WishlistController@wishlists');
         Route::post('/wishlist/add','Api\User\WishlistController@addwish');
         Route::get('/wishlist/remove/{id}','Api\User\WishlistController@removewish');
 
-        // ---------------------WISHLIST CONTROLLER ---------------------        
-        
+        // ---------------------WISHLIST CONTROLLER ---------------------
+
 
         // ---------------------PACKAGE CONTROLLER ---------------------
 
@@ -254,7 +254,6 @@ Route::group(['prefix' => 'front'], function () {
     Route::get('/vendor/products/{id}', 'Api\Front\FrontendController@vendor_products');
     Route::get('/settings', 'Api\Front\FrontendController@settings');
     Route::get('/faqs', 'Api\Front\FrontendController@faqs');
-    Route::get('/blogs', 'Api\Front\FrontendController@blogs');
     Route::get('/pages', 'Api\Front\FrontendController@pages');
     Route::get('/ordertrack','Api\Front\FrontendController@ordertrack');
     Route::post('/contactmail', 'Api\Front\FrontendController@contactmail');
@@ -297,7 +296,7 @@ Route::group(['prefix' => 'front'], function () {
     Route::get('/get/coupon-code','Api\Front\CheckoutController@getCoupon');
     Route::post('/checkout/update/{id}','Api\Front\CheckoutController@update');
     Route::get('/checkout/delete/{id}','Api\Front\CheckoutController@delete');
-    
+
     //------------ Checkout Controller ------------
 
 });

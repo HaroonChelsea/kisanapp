@@ -50,7 +50,7 @@
 		<!-- Tranding Item Area End -->
 	@endif
 
-	
+
 	@if($ps->best == 1)
 		<!-- Phone and Accessories Area Start -->
 		<section class="phone-and-accessories categori-item">
@@ -344,79 +344,6 @@
 		<!-- Clothing and Apparel Area start-->
 	@endif
 
-	@if($ps->review_blog == 1)
-		<!-- Blog Area Start -->
-		<section class="blog-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="aside">
-							<div class="slider-wrapper">
-								<div class="aside-review-slider">
-									@foreach($reviews as $review)
-										<div class="slide-item">
-											<div class="top-area">
-												<div class="left">
-													<img src="{{ $review->photo ? asset('assets/images/reviews/'.$review->photo) : asset('assets/images/noimage.png') }}" alt="">
-												</div>
-												<div class="right">
-													<div class="content">
-														<h4 class="name">{{ $review->title }}</h4>
-														<p class="dagenation">{{ $review->subtitle }}</p>
-													</div>
-												</div>
-											</div>
-											<blockquote class="review-text">
-												<p>
-													{!! $review->details !!}
-												</p>
-											</blockquote>
-										</div>
-									@endforeach
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						@foreach(DB::table('blogs')->orderby('views','desc')->take(2)->get() as $blogg)
-
-							<div class="blog-box">
-								<div class="blog-images">
-									<div class="img">
-										<img src="{{ $blogg->photo ? asset('assets/images/blogs/'.$blogg->photo):asset('assets/images/noimage.png') }}" class="img-fluid" alt="">
-										<div class="date d-flex justify-content-center">
-											<div class="box align-self-center">
-												<p>{{date('d', strtotime($blogg->created_at))}}</p>
-												<p>{{date('M', strtotime($blogg->created_at))}}</p>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<div class="details">
-									<a href='{{route('front.blogshow',$blogg->id)}}'>
-										<h4 class="blog-title">
-											{{mb_strlen($blogg->title,'utf-8') > 40 ? mb_substr($blogg->title,0,40,'utf-8')."...":$blogg->title}}
-										</h4>
-									</a>
-									<p class="blog-text">
-										{{substr(strip_tags($blogg->details),0,170)}}
-									</p>
-									<a class="read-more-btn" href="{{route('front.blogshow',$blogg->id)}}">{{ $langg->lang34 }}</a>
-								</div>
-							</div>
-
-						@endforeach
-
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Blog Area start-->
-	@endif
-
 	@if($ps->partners == 1)
 		<!-- Partners Area Start -->
 		<section class="partners">
@@ -455,9 +382,9 @@
 			<div class="container">
 
 					@foreach($services->chunk(4) as $chunk)
-	
+
 						<div class="row">
-	
+
 							<div class="col-lg-12 p-0">
 								<div class="info-big-box">
 									<div class="row">
@@ -481,16 +408,16 @@
 									</div>
 								</div>
 							</div>
-	
+
 						</div>
-	
+
 					@endforeach
-	
+
 			</div>
 		</section>
 		{{-- Info Area End  --}}
 
-		@endif		
+		@endif
 
 	<!-- main -->
 	<script src="{{asset('assets/front/js/mainextra.js')}}"></script>

@@ -28,7 +28,7 @@
                           <div class="gocover" style="background: url({{asset('assets/images/'.$gs->admin_loader)}}) no-repeat scroll center center rgba(45, 45, 45, 0.5);"></div>
                       <form id="geniusform" action="{{route('admin-role-update',$data->id)}}" method="POST" enctype="multipart/form-data">
                           {{csrf_field()}}
-                          @include('includes.admin.form-both') 
+                          @include('includes.admin.form-both')
 
                         <div class="row">
                           <div class="col-lg-4">
@@ -139,13 +139,6 @@
                         </div>
 
                         <div class="row justify-content-center">
-                            <div class="col-lg-4 d-flex justify-content-between">
-                              <label class="control-label">{{ __('Blog') }} *</label>
-                              <label class="switch">
-                                <input type="checkbox" name="section[]" value="blog" {{ $data->sectionCheck('blog') ? 'checked' : '' }}>
-                                <span class="slider round"></span>
-                              </label>
-                            </div>
                             <div class="col-lg-2"></div>
                             <div class="col-lg-4 d-flex justify-content-between">
                               <label class="control-label">{{ __('Messages') }} *</label>
@@ -250,7 +243,7 @@
                         <div class="row">
                           <div class="col-lg-5">
                             <div class="left-area">
-                              
+
                             </div>
                           </div>
                           <div class="col-lg-7">

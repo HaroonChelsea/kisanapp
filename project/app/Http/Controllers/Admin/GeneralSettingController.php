@@ -137,60 +137,10 @@ class GeneralSettingController extends Controller
 
     public function generalupdatepayment(Request $request)
     {
-        //--- Validation Section
-        $validator = Validator::make($request->all(), $this->rules);
-
-        if ($validator->fails()) {
-          return response()->json(array('errors' => $validator->getMessageBag()->toArray()));
-        }
-        //--- Validation Section Ends
-
-        //--- Logic Section
-        else {
-        $input = $request->all();
-        $curr = Currency::where('is_default','=',1)->first();
-        $data = Generalsetting::findOrFail(1);
-        $prev = $data->molly_key;  
-        
-        if ($request->vendor_ship_info == ""){
-            $input['vendor_ship_info'] = 0;
-        }
-
-        if ($request->instamojo_sandbox == ""){
-            $input['instamojo_sandbox'] = 0;
-        }
-
-        if ($request->paypal_mode == ""){
-            $input['paypal_mode'] = 'live';
-        }
-        else {
-            $input['paypal_mode'] = 'sandbox';
-        }
-
-        if ($request->paytm_mode == ""){
-            $input['paytm_mode'] = 'live';
-        }
-        else {
-            $input['paytm_mode'] = 'sandbox';
-        }
-        $input['fixed_commission'] = $input['fixed_commission'] / $curr->value;
-        $input['withdraw_fee'] = $input['withdraw_fee'] / $curr->value;
-        $data->update($input);
-        cache()->forget('generalsettings');
-
-        $this->setEnv('MOLLIE_KEY',$data->molly_key,$prev);
-        // Set Molly ENV
-        Artisan::call('cache:clear');
-        Artisan::call('config:clear');
-        Artisan::call('route:clear');
-        Artisan::call('view:clear');
-        //--- Logic Section Ends
-
         //--- Redirect Section
         $msg = 'Data Updated Successfully.';
         return response()->json($msg);
         //--- Redirect Section Ends
-        }
     }
 
     public function logo()
@@ -253,7 +203,7 @@ class GeneralSettingController extends Controller
     {
         return view('admin.generalsetting.maintain');
     }
-    
+
     public function ispopup($status)
     {
 

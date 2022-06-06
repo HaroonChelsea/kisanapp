@@ -10,10 +10,6 @@
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
 		<title>{{$gs->title}}</title>
-    @elseif(isset($blog->meta_tag) && isset($blog->meta_description))
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->meta_description }}">
-		<title>{{$gs->title}}</title>
     @elseif(isset($productt))
 		<meta name="keywords" content="{{ !empty($productt->meta_tag) ? implode(',', $productt->meta_tag ): '' }}">
 		<meta name="description" content="{{ $productt->meta_description != null ? $productt->meta_description : strip_tags($productt->description) }}">
@@ -370,9 +366,6 @@
 							@if($gs->is_home == 1)
 							<li><a href="{{ route('front.index') }}">{{ $langg->lang17 }}</a></li>
 							@endif
-							@if (DB::table('pagesettings')->find(1)->review_blog==1)
-								<li class="active" ><a  href="{{ route('front.blog') }}">{{ $langg->lang18 }}</a></li>
-							@endif
 							@if($gs->is_faq == 1)
 							<li><a href="{{ route('front.faq') }}">{{ $langg->lang19 }}</a></li>
 							@endif
@@ -484,34 +477,6 @@
 									<i class="fas fa-angle-double-right"></i>{{ $langg->lang23 }}
 								</a>
 							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4">
-					<div class="footer-widget recent-post-widget">
-						<h4 class="title">
-							{{ $langg->lang24 }}
-						</h4>
-						<ul class="post-list">
-							@foreach (App\Models\Blog::orderBy('created_at', 'desc')->limit(3)->get() as $blog)
-							<li>
-								<div class="post">
-								  <div class="post-img">
-									<img style="width: 73px; height: 59px;" src="{{ asset('assets/images/blogs/'.$blog->photo) }}" alt="">
-								  </div>
-								  <div class="post-details">
-									<a href="{{ route('front.blogshow',$blog->id) }}">
-										<h4 class="post-title">
-											{{mb_strlen($blog->title,'utf-8') > 45 ? mb_substr($blog->title,0,45,'utf-8')." .." : $blog->title}}
-										</h4>
-									</a>
-									<p class="date">
-										{{ date('M d - Y',(strtotime($blog->created_at))) }}
-									</p>
-								  </div>
-								</div>
-							  </li>
-							@endforeach
 						</ul>
 					</div>
 				</div>

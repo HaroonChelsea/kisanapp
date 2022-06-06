@@ -10,13 +10,6 @@
         <meta name="keywords" content="{{ $page->meta_tag }}">
         <meta name="description" content="{{ $page->meta_description }}">
 		<title>{{$gs->title}}</title>
-	@elseif(isset($blog->meta_tag) && isset($blog->meta_description))
-		<meta property="og:title" content="{{$blog->title}}" />
-		<meta property="og:description" content="{{ $blog->meta_description != null ? $blog->meta_description : strip_tags($blog->meta_description) }}" />
-		<meta property="og:image" content="{{asset('assets/images/blogs'.$blog->photo)}}" />
-        <meta name="keywords" content="{{ $blog->meta_tag }}">
-        <meta name="description" content="{{ $blog->meta_description }}">
-		<title>{{$gs->title}}</title>
     @elseif(isset($productt))
 		<meta name="keywords" content="{{ !empty($productt->meta_tag) ? implode(',', $productt->meta_tag ): '' }}">
 		<meta name="description" content="{{ $productt->meta_description != null ? $productt->meta_description : strip_tags($productt->description) }}">
@@ -84,11 +77,11 @@
 <!-- Breadcrumb Area End -->
 
 	<!-- Check Out Area Start -->
-	<section class="checkout"> 
+	<section class="checkout">
 		<div class="container">
 
 			<div class="row">
-				
+
 
 				<div class="col-lg-8 order-last order-lg-first">
 
@@ -149,7 +142,7 @@
 																	</p>
 															</a>
 														@endif
-													
+
 														@if($gs->is_instamojo == 1)
 															<a class="nav-link payment" data-val="" data-show="no" data-form="{{route('api.instamojo.submit')}}" data-href="{{ route('front.load.payment',['slug1' => 'instamojo','slug2' => 0]) }}"  id="v-pills-tab4-tab" data-toggle="pill" href="#v-pills-tab4" role="tab" aria-controls="v-pills-tab4" aria-selected="false">
 																	<div class="icon">
@@ -176,15 +169,15 @@
 																		</div>
 																		<p>
 																				{{ $langg->paytm }}
-	
+
 																			@if($gs->paytm_text != null)
-	
+
 																			<small>
 																					{{ $gs->paytm_text }}
 																			</small>
-	
+
 																			@endif
-	
+
 																		</p>
 																</a>
 																@endif
@@ -194,23 +187,23 @@
 																					<span class="radio"></span>
 																			</div>
 																			<p>
-																					
+
 																				{{ $langg->razorpay }}
-		
+
 																				@if($gs->razorpay_text != null)
-		
+
 																				<small>
 																						{{ $gs->razorpay_text }}
 																				</small>
-		
+
 																				@endif
-		
+
 																			</p>
 																	</a>
 																	@endif
-																	
-														
-															
+
+
+
 															@if($gs->is_paystack == 1)
 
 															<a class="nav-link payment" data-val="paystack" data-show="no" data-form="{{route('api.paystack.submit')}}" data-href="{{ route('front.load.payment',['slug1' => 'paystack','slug2' => 0]) }}" id="v-pills-tab7-tab" data-toggle="pill" href="#v-pills-tab7" role="tab" aria-controls="v-pills-tab7" aria-selected="false">
@@ -231,8 +224,8 @@
 															</a>
 
 															@endif
-															
-															
+
+
 
 
 															@if($gs->is_molly == 1)
@@ -261,7 +254,7 @@
 													  <div class="pay-area d-none">
 														<div class="tab-content" id="v-pills-tabContent">
 
-															
+
 															@if($gs->paypal_check == 1)
 															<div class="tab-pane fade" id="v-pills-tab1" role="tabpanel" aria-labelledby="v-pills-tab1-tab">
 
@@ -271,7 +264,7 @@
 															<div class="tab-pane fade" id="v-pills-tab2" role="tabpanel" aria-labelledby="v-pills-tab2-tab">
 															</div>
 															@endif
-														
+
 															@if($gs->is_instamojo == 1)
 																<div class="tab-pane fade" id="v-pills-tab4" role="tabpanel" aria-labelledby="v-pills-tab4-tab">
 																</div>
@@ -291,16 +284,16 @@
 															@if($gs->is_molly == 1)
 																<div class="tab-pane fade" id="v-pills-tab8" role="tabpanel" aria-labelledby="v-pills-tab8-tab">
 																</div>
-															@endif										
-																								
-															
-														
+															@endif
+
+
+
 													</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											
+
 										<div class="row">
 											<div class="col-lg-12 mt-3">
 												<div class="bottom-area">
@@ -334,27 +327,27 @@
         		                {{ $langg->lang131 }}
         		              </p>
         		              <p>
-                                    
+
         							@if($gs->currency_format == 0)
         								<span id="total-cost">{{ $order->currency_sign }}<span class="total_price"> {{ round($order->pay_amount * $order->currency_value,2) }}</span></span>
-        							@else 
+        							@else
         								<span id="total-cost"> <span class="total_price"> {{ round($order->pay_amount * $order->currency_value,2) }}</span>{{ $order->currency_sign }}</span>
         							@endif
-        
+
         		              </p>
 		                    </div>
 
-               
+
 						{{-- Shipping Method Area Start --}}
 						<div class="packeging-area">
 								<h4 class="title">{{ $langg->lang765 }}</h4>
 
 							@foreach($shipping_data as $data)
-						
+
 								<div class="radio-design">
-										<input type="radio" class="shipping" id="free-shepping{{ $data->id }}" name="shipping" value="{{$data->id}}" data="{{ round($data->price * $order->currency_value,2) }}" {{ ($loop->first) ? 'checked' : '' }}> 
+										<input type="radio" class="shipping" id="free-shepping{{ $data->id }}" name="shipping" value="{{$data->id}}" data="{{ round($data->price * $order->currency_value,2) }}" {{ ($loop->first) ? 'checked' : '' }}>
 										<span class="checkmark"></span>
-										<label for="free-shepping{{ $data->id }}"> 
+										<label for="free-shepping{{ $data->id }}">
 												{{ $data->title }}
 												@if($data->price != 0)
 												+ {{ $order->currency_sign }}{{ round($data->price * $order->currency_value,2) }}
@@ -363,7 +356,7 @@
 										</label>
 								</div>
 
-							@endforeach		
+							@endforeach
 
 						</div>
 						{{-- Shipping Method Area End --}}
@@ -372,12 +365,12 @@
 						<div class="packeging-area">
 								<h4 class="title">{{ $langg->lang766 }}</h4>
 
-							@foreach($package_data as $data)	
+							@foreach($package_data as $data)
 
 								<div class="radio-design">
-										<input type="radio" class="packing" id="free-package{{ $data->id }}" name="packeging" value="{{$data->id}}" data="{{ round($data->price * $order->currency_value,2) }}" {{ ($loop->first) ? 'checked' : '' }}> 
+										<input type="radio" class="packing" id="free-package{{ $data->id }}" name="packeging" value="{{$data->id}}" data="{{ round($data->price * $order->currency_value,2) }}" {{ ($loop->first) ? 'checked' : '' }}>
 										<span class="checkmark"></span>
-										<label for="free-package{{ $data->id }}"> 
+										<label for="free-package{{ $data->id }}">
 												{{ $data->title }}
 												@if($data->price != 0)
 												+ {{ $order->currency_sign }}{{ round($data->price * $order->currency_value,2) }}
@@ -386,7 +379,7 @@
 										</label>
 								</div>
 
-							@endforeach	
+							@endforeach
 
 						</div>
 						{{-- Packeging Area End Start--}}
@@ -397,12 +390,12 @@
 
 						</div>
 					</div>
-					
-					
-                          
+
+
+
 					</form>
-					
-					
+
+
 				</div>
 
 			</div>
@@ -474,7 +467,7 @@
 </script>
 
 
-@php 
+@php
 $curr = App\Models\Currency::where('sign','=',$order->currency_sign)->firstOrFail();
 @endphp
 
@@ -485,7 +478,7 @@ var ck = 0;
 
 	$('.checkoutform').on('submit',function(e){
 		if(ck == 0) {
-			e.preventDefault();			
+			e.preventDefault();
 		$('#pills-step2-tab').removeClass('disabled');
 		$('#pills-step2-tab').click();
 
@@ -574,17 +567,17 @@ var ck = 0;
 		}
 		$($(this).attr('href')).load($(this).data('href'));
 	})
-	
-	
-	
+
+
+
 	$(document).on('click','.shipping',function(){
 	    grandTotal();
 	});
-	
+
 	$(document).on('click','.packing',function(){
 	    grandTotal();
 	});
-	
+
 	let extra = 0;
 	function grandTotal(){
 	    $('#grandTotal').val($('#preamount').val());
@@ -602,7 +595,7 @@ var ck = 0;
         	$('#preloader').hide();
             var val = $('#sub').val();
             var total = $('#grandTotal').val() ;
-            
+
 			total = Math.round(total);
                 if(val == 0)
                 {
@@ -622,14 +615,14 @@ var ck = 0;
                   }
                 });
                 handler.openIframe();
-                    return false;                    
+                    return false;
                 }
                 else {
                 	$('#preloader').show();
-                    return true;   
+                    return true;
                 }
 		});
-		
+
 
 		closedFunction=function() {
         alert('window closed');

@@ -19,7 +19,7 @@
             </li>
             <li>
                 <a href="{{route('admin-order-declined')}}"> {{ __('Declined Orders') }}</a>
-            </li>  
+            </li>
 
         </ul>
     </li>
@@ -202,24 +202,6 @@
 
 @endif
 
-@if(Auth::guard('admin')->user()->sectionCheck('blog'))
-
-    <li>
-        <a href="#blog" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-fw fa-newspaper"></i>{{ __('Blog') }}
-        </a>
-        <ul class="collapse list-unstyled" id="blog" data-parent="#accordion">
-            <li>
-                <a href="{{ route('admin-cblog-index') }}"><span>{{ __('Categories') }}</span></a>
-            </li>
-            <li>
-                <a href="{{ route('admin-blog-index') }}"><span>{{ __('Posts') }}</span></a>
-            </li>
-        </ul>
-    </li>
-
-@endif
-
 
 @if(Auth::guard('admin')->user()->sectionCheck('messages'))
 
@@ -331,7 +313,7 @@
                 <a href="{{ route('admin-partner-index') }}"><span>{{ __('Partners') }}</span></a>
             </li>
 
-            
+
             <li>
                 <a href="{{ route('admin-ps-customize') }}"><span>{{ __('Home Page Customization') }}</span></a>
             </li>
@@ -370,9 +352,9 @@
             <i class="fas fa-at"></i>{{ __('Email Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="emails" data-parent="#accordion">
-            <li><a href="{{route('admin-mail-index')}}"><span>{{ __('Email Template') }}</span></a></li>  
-            <li><a href="{{route('admin-mail-config')}}"><span>{{ __('Email Configurations') }}</span></a></li>  
-            <li><a href="{{route('admin-group-show')}}"><span>{{ __('Group Email') }}</span></a></li>  
+            <li><a href="{{route('admin-mail-index')}}"><span>{{ __('Email Template') }}</span></a></li>
+            <li><a href="{{route('admin-mail-config')}}"><span>{{ __('Email Configurations') }}</span></a></li>
+            <li><a href="{{route('admin-group-show')}}"><span>{{ __('Group Email') }}</span></a></li>
         </ul>
     </li>
 
@@ -386,9 +368,9 @@
             <i class="fas fa-file-code"></i>{{ __('Payment Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="payments" data-parent="#accordion">
-            <li><a href="{{route('admin-gs-payments')}}"><span>{{__('Payment Information')}}</span></a></li>  
-            <li><a href="{{route('admin-payment-index')}}"><span>{{ __('Payment Gateways') }}</span></a></li>  
-            <li><a href="{{route('admin-currency-index')}}"><span>{{ __('Currencies') }}</span></a></li>  
+            <li><a href="{{route('admin-gs-payments')}}"><span>{{__('Payment Information')}}</span></a></li>
+            <li><a href="{{route('admin-payment-index')}}"><span>{{ __('Payment Gateways') }}</span></a></li>
+            <li><a href="{{route('admin-currency-index')}}"><span>{{ __('Currencies') }}</span></a></li>
         </ul>
     </li>
 
@@ -401,7 +383,7 @@
             <i class="fas fa-paper-plane"></i>{{ __('Social Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
-                <li><a href="{{route('admin-social-index')}}"><span>{{ __('Social Links') }}</span></a></li>   
+                <li><a href="{{route('admin-social-index')}}"><span>{{ __('Social Links') }}</span></a></li>
                 <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
                 <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li>
         </ul>
@@ -416,7 +398,7 @@
             <i class="fas fa-language"></i>{{ __('Language Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="langs" data-parent="#accordion">
-                <li><a href="{{route('admin-lang-index')}}"><span>{{ __('Website Language') }}</span></a></li>   
+                <li><a href="{{route('admin-lang-index')}}"><span>{{ __('Website Language') }}</span></a></li>
                 <li><a href="{{route('admin-tlang-index')}}"><span>{{ __('Admin Panel Language') }}</span></a></li>
 
         </ul>
